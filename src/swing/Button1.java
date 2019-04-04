@@ -14,7 +14,9 @@ public class Button1 {
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JButton button = new JButton("klick mich");
-		frame.getContentPane().add(BorderLayout.EAST, button);
+		Font bigFont = new Font("serif", Font.BOLD, 28);
+		button.setFont(bigFont);
+		frame.getContentPane().add(BorderLayout.NORTH, button);
 		frame.setSize(200, 200);
 		frame.setVisible(true);
 	}
