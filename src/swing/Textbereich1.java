@@ -23,7 +23,7 @@ public class Textbereich1 implements ActionListener {
 		text.setLineWrap(true);
 		
 		JScrollPane scroller = new JScrollPane(text);
-		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		panel.add(scroller);
