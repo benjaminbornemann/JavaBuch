@@ -139,14 +139,14 @@ public class BeatBox {
 	public class MeinSchnellerListener implements ActionListener  {
 		public void actionPerformed(ActionEvent a)  {
 			float tempoFactor = sequencer.getTempoFactor();
-			sequencer.setTempoFactor((float) (tempoFactor * 1.03));
+			sequencer.setTempoFactor((float) (tempoFactor * 1.2));
 		}
 	}  // Ende MeinSchnellerListener
 	
 	public class MeinLangsamerListener implements ActionListener  {
 		public void actionPerformed(ActionEvent a)  {
 			float tempoFactor = sequencer.getTempoFactor();
-			sequencer.setTempoFactor((float) (tempoFactor * .97));
+			sequencer.setTempoFactor((float) (tempoFactor * 0.9));
 		}
 	}  // Ende MeinLangsamerListener
 	
