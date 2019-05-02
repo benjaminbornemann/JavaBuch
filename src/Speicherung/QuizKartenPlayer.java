@@ -72,10 +72,10 @@ public class QuizKartenPlayer {
 				nächsteKarteButton.setEnabled(false);
 			}
 		}
-	}
+		}
 
 	
-	private class MenüÖffnenListener immplements ActionListener  {
+	private class MenüÖffnenListener implements ActionListener  {
 		public void actionPerformed(ActionEvent ev)  {
 			JFileChooser dateiÖffnen = new JFileChooser();
 			dateiÖffnen.showOpenDialog(frame);
@@ -116,5 +116,7 @@ public class QuizKartenPlayer {
 		istAntwortAngezeigt = true;
 	}
 }
-	}
+	
+}
+}
 
