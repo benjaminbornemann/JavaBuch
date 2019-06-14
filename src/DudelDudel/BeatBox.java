@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.sound.midi.*;
 import java.util.*;
 import java.awt.event.*;
+import java.io.*;
 
 public class BeatBox {
 	
@@ -158,6 +159,54 @@ public class BeatBox {
 				track.add(eventErzeugen(144, 9, taste, 100, i));
 				track.add(eventErzeugen(128, 9, taste, 100, i+1));
 			}
+		}
+	}
+	
+	public class MeinSendenListener implements ActionListener  {
+		
+		public void actionPerformed(ActionEvent a)  {
+			boolean[] checkboxZustand = new boolean[256];
+			
+			for (int i = 0; i < 256; i++)  {
+				
+				JCheckBox check = (JCheckBox) checkBoxListe.get(i);
+				if (check.isSelected())  {
+					checkboxZustand[i] = true;
+				}
+			}
+			
+			try  {
+				FileOutputStream fileStream = new FileOutputStream(new File("Checkbox.ser"));
+				ObjectOutputStream os = new ObjectOutputStream(fileStream);
+				os.writeObject(checkboxZustand);
+			}  catch(Exception ex  ) {
+				ex.printStackTrace();
+			}
+		}
+	}  // Ende MeinSendenListener -------------------------------------------------------
+	
+	public class MeinEinlesenListener implements ActionListener  {
+		
+		public void actionPerformed(ActionEvent a)  {
+			boolean[] checkboxZustand = null;
+			try  {
+				FileInputStream fileIn = new FileInputStream(new File("Checkbox.ser"));
+				ObjectInputStream is = new ObjectInputStream(fileIn);
+				checkboxZustand = (boolean[]) is.readObject();
+			}  catch(Exception ex)  {ex.printStackTrace();}
+			
+			for (int i = 0; i < 256; i++)   {
+				JCheckBox check = (JCheckBox) checkBoxListe.get(i);
+				if (checkboxZustand[i])  {
+					check.setSelected(true);
+				} else  {
+					check.setSelected(false);
+				}
+			}
+			
+			sequencer.stop();
+			trackErstellenUndStarten();
+			
 		}
 	}
 	
