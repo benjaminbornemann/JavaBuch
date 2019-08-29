@@ -23,7 +23,7 @@ public class QuizKartenPlayer {
 
 	public void los()  {
 		
-		// GUI aufbauen
+		// GUI aufbauen kaputt
 		
 		frame = new JFrame("Quizkarten-Player");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
