@@ -73,7 +73,7 @@ public class QuizKartenPlayer {
 			}
 		}
 		}
-
+	}
 	
 	private class MenüÖffnenListener implements ActionListener  {
 		public void actionPerformed(ActionEvent ev)  {
@@ -118,5 +118,5 @@ public class QuizKartenPlayer {
 }
 	
 }
-}
+
 
