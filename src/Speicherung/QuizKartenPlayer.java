@@ -73,6 +73,15 @@ public class QuizKartenPlayer {
 			}
 		}
 		}
+		
+		private void nächsteKarteZeigen()  {
+			aktuelleKarte = kartenliste.get(aktuelleKarteIndex);
+			aktuelleKarteIndex++;
+			anzeige.setText(aktuelleKarte.getFrage());
+			nächsteKarteButton.setText("Antwort zeigen");
+			istAntwortAngezeigt = true;
+		}
+		
 	}
 	
 	private class MenüÖffnenListener implements ActionListener  {
@@ -115,6 +124,7 @@ public class QuizKartenPlayer {
 		nächsteKarteButton.setText("Antwort zeigen");
 		istAntwortAngezeigt = true;
 	}
+	
 }
 	
 }
