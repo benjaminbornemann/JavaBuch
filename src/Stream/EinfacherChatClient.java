@@ -36,5 +36,53 @@ public class EinfacherChatClient {
 		hauptPanel.add(ausgehend);
 		hauptPanel.add(sendenButton);
 		netzwerkEinrichten();
-	}
-}
+		
+		Thread readerThread = new Thread(new EingehendReader());
+		readerThread.start();
+		
+		frame.getContentPane().add(BorderLayout.CENTER, hauptPanel);
+		frame.setSize(400, 500);
+		frame.setVisible(true);
+	}  // Ende los
+	
+	private void netzwerkEinrichten()  {
+		
+		try  {
+			sock = new Socket("127.0.0.1", 5000);
+			InputStreamReader streamReader = new InputStreamReader(sock.getInputStream());
+			reader = new BufferedReader(streamReader);
+			writer = new PrintWriter(sock.getOutputStream());
+			System.out.println("Netzwerkverbindung steht");
+		}  catch(IOException ex)  {
+			ex.printStackTrace();
+		}
+	}  // netzwerkEinrichten Ende
+	
+	
+	public class SendenButtonListener implements ActionListener  {
+		public void actionPerformed(ActionEvent ev)  {
+			try  {
+				writer.println(ausgehend.getText());
+				writer.flush();
+			}  catch(Exception ex)  {
+				ex.printStackTrace();
+			}
+			ausgehend.setText("");
+			ausgehend.requestFocus();
+		}
+	}  // innere Klasse SendenButtonListener Ende
+	
+	public class EingehendReader implements Runnable  {
+		public void run()  {
+			String nachricht;
+			try  {
+				while ((nachricht = reader.readLine()) != null)  {
+					System.out.println("gelesen: " + nachricht);
+					eingehend.append(nachricht + "\n");
+				}  // Ende while
+			} catch(Exception ex ) {ex.printStackTrace();}
+		}  // run Ende
+	}  // innere Klasse EingehendReader Ende
+	
+	
+}    // ‰uﬂere Klasse Ende
