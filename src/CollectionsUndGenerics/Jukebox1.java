@@ -5,7 +5,7 @@ import java.io.*;
 
 public class Jukebox1 {
 
-	ArrayList<String> songList = new ArrayList<String>();
+	ArrayList<Song> songList = new ArrayList<Song>();
 	
 	
 	public static void main(String[] args) {
@@ -14,6 +14,8 @@ public class Jukebox1 {
 	
 	public void los()  {
 		getSongs();
+		System.out.println(songList);
+		Collections.sort(songList);
 		System.out.println(songList);
 	}
 	
@@ -25,14 +27,20 @@ public class Jukebox1 {
 			while ((zeile=reader.readLine()) != null)  {
 				addSong(zeile);
 			}
+			reader.close();
 		}  catch(Exception ex)  {
 			ex.printStackTrace();
 		}
+		
 	}
+	
+	;
 
 	void addSong(String zuParsendeZeile)  {
 		String[] tokens = zuParsendeZeile.split("/");
-		songList.add(tokens[0]);
+		
+		Song nächsterSong = new Song(tokens[0], tokens[1], tokens[2], tokens[3]);
+		songList.add(nächsterSong);
 	}
 	
 }
