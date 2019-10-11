@@ -9,6 +9,8 @@ import java.io.*;
 
 public class BeatBox {
 	
+	//bla
+	
 	JPanel hauptPanel;
 	ArrayList<JCheckBox> checkBoxListe;
 	Sequencer sequencer;
