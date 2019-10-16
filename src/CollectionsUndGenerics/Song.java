@@ -1,12 +1,16 @@
 package CollectionsUndGenerics;
 
-class Song {
+class Song implements Comparable<Song>{
 	
 	String titel;
 	String künstler;
 	String bewertung;
 	String bpm;
 	
+	public int compareTo(Song s)  {
+		return titel.compareTo(s.getTitel());
+	}
+		
 	Song(String t ,String k, String bw, String b)  {
 		titel = t;
 		künstler = k;

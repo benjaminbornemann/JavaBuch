@@ -22,7 +22,7 @@ public class Jukebox1 {
 	
 	void getSongs()  {
 		try {
-			File datei = new File("SongList.txt");
+			File datei = new File("SongListPlus.txt");
 			BufferedReader reader = new BufferedReader(new FileReader(datei));
 			String zeile = null;
 			while ((zeile=reader.readLine()) != null)  {
